@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model testrun {
+  name    String   @unique
+  lambdas lambda[]
+}
+
+model lambda {
+  lambdaid         String  @unique
+  invocation_count Int
+  testrun          testrun @relation(fields: [testrun_name], references: [name])
+  testrun_name     String
+}
