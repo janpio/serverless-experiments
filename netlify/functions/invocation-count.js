@@ -21,7 +21,12 @@ exports.handler = async function(event, context) {
   }
 
   const upsert = await prisma.lambda.upsert({
-    where: { lambdaid: lambdaid },
+    where: { 
+      lambdaid_testrun_name: {
+        lambdaid: lambdaid,
+        testrun_name: testrun,
+      }
+    },
     create: {
       lambdaid: lambdaid,
       invocation_count: 1,

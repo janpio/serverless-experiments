@@ -13,8 +13,9 @@ model testrun {
 }
 
 model lambda {
-  lambdaid         String  @unique
+  lambdaid         String 
   invocation_count Int
   testrun          testrun @relation(fields: [testrun_name], references: [name])
   testrun_name     String
+  @@unique([lambdaid, testrun_name])
 }
