@@ -13,7 +13,7 @@ const lambdaid = crypto.randomBytes(16).toString("hex");
 let invocation_count = 0
  
 exports.handler = async function(event, context) {
-  console.log({event})
+  // console.log({event})
 
   let testrun = ''
   if(event.queryStringParameters.testrun) {
